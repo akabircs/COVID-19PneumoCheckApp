@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+  <shape>
+    <gradient android:type="linear"
+        android:angle="45"
+        android:centerColor="#C4E6FF"
+        android:endColor="#C2CFFF"
+        android:startColor="#EEB8FF"
+        />
+  </shape>
+  </item>
+  <item>
+    <bitmap android:src="@drawable/blueicon"
+        android:gravity="center_horizontal"
+        android:alpha="0.02"/>
+  </item>
+</layer-list>

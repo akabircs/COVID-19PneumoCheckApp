@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_submissioncard_entry"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="8dp"
+    android:minHeight="201dp"
+    android:outlineSpotShadowColor="#000000"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="2dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/glass_gradient_background"
+        android:padding="8dp">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:horizontalSpacing="8dp"
+            android:minHeight="201dp"
+            android:rowCount="4">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="8dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        app:cardBackgroundColor="#DCFFFFFF"
+                        app:cardCornerRadius="60dp"
+                        app:cardElevation="0dp"
+                        app:cardMaxElevation="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/glass_gradient_background_less_transparent">
+
+                            <TextView
+                                android:id="@+id/textview_submissioncard_initials_badge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="20dp"
+                                android:text="DF"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorSecondaryLight"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/textview_submissionscard_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/textview_initials_badge"
+                    android:text="Longest-FirstName-Ever"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_on_primary_emphasis_high_type" />
+
+                <TextView
+                    android:id="@+id/textview_submissionscard_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/textview_initials_badge"
+                    android:text="Longest-LastName-Ever"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_on_primary_emphasis_high_type"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowSpan="2"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="16dp">
+
+                        <ImageView
+                            android:id="@+id/imageview_submissioncard_xraythumbnail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/sample_xray" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/textview_submissionscard_age_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/textview_initials_badge"
+                    android:text="Age"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_primary_emphasis_high_type"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textview_submissionscard_sex_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/textview_initials_badge"
+                    android:text="Sex"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_primary_emphasis_high_type"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_gravity="fill_horizontal|center_vertical|left"
+                android:paddingVertical="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="8dp">
+
+                        <TextView
+                            android:id="@+id/textview_submissionscard_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/textview_initials_badge"
+                            android:text="23"
+                            android:textColor="@color/material_on_background_emphasis_high_type"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textview_submissionscard_sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/textview_initials_badge"
+                            android:text="Male"
+                            android:textColor="@color/material_on_background_emphasis_high_type"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_gravity="center|fill"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/glass_gradient_background_less_transparent"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="X-RAYID:"
+                                android:textColor="@color/colorSecondaryLight" />
+
+                            <TextView
+                                android:id="@+id/textview_submissioncard_xrayid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="24536789654324567896543"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/colorSecondaryLight" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Creation of Scan:"
+                                android:textColor="@color/colorSecondary" />
+
+                            <TextView
+                                android:id="@+id/textview_submissioncard_scancreationdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="22/2/2020"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/colorSecondary" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Submission Date:"
+                                android:textColor="@color/colorSecondary" />
+
+                            <TextView
+                                android:id="@+id/textview_submissioncard_submissioncreationdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="22/2/2020"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/colorSecondary" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_gravity="center|fill"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp">
+
+                            <Button
+                                android:id="@+id/btn_submissioncard_edit"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_baseline_edit_24"
+                                android:drawableTint="@color/colorPrimaryLight"
+                                android:text="EDIT" />
+
+                            <Button
+                                android:id="@+id/btn_submissioncard_delete"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_baseline_delete_forever_24"
+                                android:drawableTint="@color/colorRedAlert"
+                                android:text="ERASE"
+                                android:textColor="@color/colorRedAlert" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textView_submissioncard_result"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Result"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textview_submissioncard_resultinfo"
+                                style="@style/TextAppearance.AppCompat.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="RESULTINFO" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:id="@+id/linearlayout_submissioncard_learntAt_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textview_submissioncard_learntAt_label"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="AI Learnt At: " />
+
+                    <TextView
+                        android:id="@+id/textview_submissioncard_learntAt"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </GridLayout>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

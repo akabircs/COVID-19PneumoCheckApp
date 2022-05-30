@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1053CA</color>
+    <color name="colorPrimaryLight">#607ffe</color>
+    <color name="colorPrimaryDark">#002C98</color>
+    <color name="colorSecondary">#C4D2DB</color>
+    <color name="colorSecondaryLight">#f7ffff</color>
+    <color name="colorSecondaryDark">#93a1a9</color>
+    <color name="colorAccent">#C4D2DB</color>
+    <color name="colorRedAlert">#FF0000</color>
+    <color name="colorNotificationDrawablesLight">#DB7DFD</color>
+    <color name="colorNotificationDrawablesDark">#815FD1</color>
+
+</resources>

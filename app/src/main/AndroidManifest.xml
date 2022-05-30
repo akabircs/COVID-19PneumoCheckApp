@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Permission to access internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permission to read photos from storage -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Permission to write to temp storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Permission to use the camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <!-- Permission to Record Audio -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:isGame="false"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.Launcher"
+        android:usesCleartextTraffic="true"
+        >
+
+        <!-- Sign Up Form Acivity -->
+        <activity
+            android:name=".ui.authentication.UserSignUpActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Survey Activity -->
+        <activity
+            android:name=".survey.SurveyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SurveyKit" />
+
+        <!-- Edit Submission Form Activity -->
+        <activity
+            android:name=".ui.EditFormActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
+
+        <!--cropping activity-->
+        <activity android:name="com.yalantis.ucrop.UCropActivity" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
+        <!-- Login Activity -->
+        <activity android:name=".ui.authentication.LoginActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Provider used for File Management -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.touchmediaproductions.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_submissions">
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.touchmediaproductions.pneumocheck.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info"
+        >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_submissions"
+        android:name="com.touchmediaproductions.pneumocheck.ui.submissions.SubmissionsFragment"
+        android:label="@string/title_submissions"
+        tools:layout="@layout/fragment_submissions" >
+        <action
+            android:id="@+id/action_navigation_submissions_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.touchmediaproductions.pneumocheck.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_help"
+            app:destination="@id/navigation_help" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="com.touchmediaproductions.pneumocheck.ui.help.HelpFragment"
+        android:label="@string/title_help"
+        tools:layout="@layout/fragment_help" />
+</navigation>

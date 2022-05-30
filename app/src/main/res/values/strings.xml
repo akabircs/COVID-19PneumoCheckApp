@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">PneumoCheck</string>
+    <string name="title_info">Info</string>
+    <string name="title_submissions">Submissions</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_help">Help</string>
+    <string name="add_x_ray_instruction">ADD X-RAY FROM</string>
+    <string name="camera">Camera</string>
+    <string name="photos">Device Gallery</string>
+    <string name="editscan_instructions">The image is being analysed, meanwhile please fill out the form.</string>
+    <string name="info1">COVID-19 Virtual PneumoCheck is an Android mobile app that provides a channel for users to contribute towards Covid-19 research and obtain a virtual Chest X-Ray Covid-19 prediction based on the power of machine learning artificial intelligence.</string>
+    <string name="info2">The app provides an intuitive and simplistic way of uploading or scanning your Chest X-Ray (CXR) images and performing on-device Artificial Intelligence prediction of the likeness of the CXR image provided to similar traits found in Covid-19 infected chest x-rays (CXR) and normal healthy chest x-rays.</string>
+    <string name="info3">If the user obtains a confirmation of their Covid-19 test results from an official medical testing centre, they will be able to notify and teach the app by confirming the prediction to be true or false. Upon confirmation the machine learning model will ‘learn’ from the user’s input and commit the learnt knowledge to future predictions on-device. A future goal of COVID-19 Virtual PneumoCheck will be to allow the user to opt-in to upload their data to secure cloud-hosted machine learning systems which will learn from confirmed predictions from all participating users that volunteer to share their medical diagnosis. It would then be able to update and push out the updated model to all users of the PneumoCheck App. The app will store the photo uploaded by the user along with the personal details gathered from the user with permission. The app will perform image recognition using Convolutional Neural Network (CNN) on the photo provided and provide a prediction of the likelihood of a Covid-19 diagnosis.</string>
+    <string name="infodisclaimer">Disclaimer: the classification prediction provided by the app is merely for research purposes and is not an official medical diagnosis. Please obtain a medical diagnosis from a Covid-19 registered medical testing centre for an official diagnosis.</string>
+    <string name="notification_database_is_empty">Loading Submissions...\nSubmissions will appear here.\nTo add a new submission, tap the + button below and add your Chest X-Ray scan as a photo.</string>
+    <string name="notification_submission_added">Submission Added</string>
+    <string name="notification_submission_add_failed">Failed to add data in DB!</string>
+    <string name="notification_submission_invalid_wait">Please fix any invalid fields and wait for prediction to complete before trying again</string>
+    <string name="promptmessage_gainagreement_submit">Do you agree to submitting your personal information, location and chest X-Ray under the conditions of the privacy policy?</string>
+    <string name="response_i_agree">I Agree</string>
+    <string name="response_decline">Decline</string>
+    <string name="classification_covid_19">COVID-19</string>
+    <string name="classification_pneumonia">Pneumonia</string>
+    <string name="classification_normal">Normal</string>
+    <string name="editform_title">Edit Submission Form</string>
+    <string name="predictionconfirmation_agreement_confirmsubmit">\"By confirming a diagnosis you agree that you have received an official diagnosis outside of this app  and have been tested and diagnosed by a professional COVID-19 medical center.\n\nAre you sure you wish to confirm the prediction \"</string>
+    <string name="confirmprediction_agreement_providediagnosticresult_prompt">By confirming a diagnosis you agree that you have received an official diagnosis outside of this app and have been tested and diagnosed by a professional COVID-19 medical center.\n\nPlease select the diagnosis you received from your doctor.</string>
+    <string name="shared_preferences_key">PneumoCheck-Shared-Preferences</string>
+</resources>

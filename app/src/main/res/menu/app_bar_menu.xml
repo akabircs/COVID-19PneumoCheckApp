@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/navigation_info"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="@string/title_info"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/navigation_submissions"
+        android:icon="@drawable/ic_baseline_dns_24"
+        android:title="@string/title_submissions"
+        app:showAsAction="ifRoom"
+        />
+
+    <item android:id="@+id/blank_page1"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/title_settings"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/navigation_help"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="@string/title_help"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>

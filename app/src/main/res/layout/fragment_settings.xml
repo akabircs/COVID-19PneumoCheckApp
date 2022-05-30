@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context="com.touchmediaproductions.pneumocheck.ui.settings.SettingsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/text_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="20dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/glass_gradient_background_less_transparent"
+                android:padding="10dp">
+
+                <TableRow
+                    android:paddingHorizontal="8dp"
+                    android:paddingTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Hello,"
+                        android:textColor="@color/colorSecondaryLight" />
+
+                    <TextView
+                        android:id="@+id/textview_settings_accounttype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="_"
+                        android:textAlignment="textEnd"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                        android:textColor="@color/colorSecondaryLight" />
+                </TableRow>
+
+                <TableRow android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/textview_settings_firstname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Firstname"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/colorSecondaryLight" />
+                </TableRow>
+
+                <TableRow
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/textview_settings_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="test@test.com"
+                        android:textColor="@color/colorSecondaryLight" />
+                </TableRow>
+
+                <TableRow>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="4"
+                        android:background="@color/colorNotificationDrawablesLight" />
+                </TableRow>
+
+                <TableRow
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_settings_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/textview_settings_agelabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age:"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/colorSecondaryLight" />
+
+                        <TextView
+                            android:id="@+id/textview_settings_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:text="E.G."
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/colorSecondaryLight" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_settings_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/textview_settings_sexlabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sex:"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/colorSecondaryLight" />
+
+                        <TextView
+                            android:id="@+id/textview_settings_sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:text="E.G."
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                            android:textColor="@color/colorSecondaryLight" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Account" />
+
+                            <Button
+                                android:id="@+id/button_settings_logout"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Logout"
+                                android:textColor="@color/colorPrimary" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardview_settings_surveycompletioncard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Profile Survey" />
+
+                            <Button
+                                android:id="@+id/button_settings_completesurvey"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Start"
+                                android:textColor="@color/colorPrimary" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardview_settings_associatedaccounts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textview_settings_associatedaccountslabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Associated Accounts" />
+
+                            <Button
+                                android:id="@+id/button_settings_adddoctor"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ADD"
+                                android:textColor="@color/colorPrimary" />
+                        </TableRow>
+
+                        <TableRow android:layout_width="match_parent">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerview_settings_associatedaccounts"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+                        </TableRow>
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/colorSecondaryLight"
+                    android:padding="8dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_settings"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Clear image Cache" />
+
+                            <Button
+                                android:id="@+id/button_settings_clearcache"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Clear"
+                                android:textColor="@color/colorPrimary" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialcard_settings_overridemodellocalchoose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Override Model" />
+
+                            <Button
+                                android:id="@+id/button_settings_choosemodel"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Choose..."
+                                android:textColor="@color/colorPrimary" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Enable CTScan" />
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/materialswitch_settings_allowctscan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:theme="@style/PCCustomToggleSwitchTheme" />
+                        </TableRow>
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Enable Continual AI" />
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/materialswitch_settings_enablecontinualai"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:theme="@style/PCCustomToggleSwitchTheme" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/colorSecondaryLight"
+                    android:padding="8dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Delete Database" />
+
+                            <Button
+                                android:id="@+id/button_settings_cleardb"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="DELETE"
+                                android:textColor="@color/colorRedAlert" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Delete Account" />
+
+                            <Button
+                                android:id="@+id/button_settings_deleteaccount"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="DELETE"
+                                android:textColor="@color/colorRedAlert" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardview_settings_developercard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="8dp">
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textview_settings_developer_runlocaltestdescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Local Based Test" />
+
+                            <Button
+                                android:id="@+id/button_settings_run_local_tests"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="RUN"
+                                android:textColor="@color/colorRedAlert" />
+                        </TableRow>
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textview_settings_run_local_tests_debugoutput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textIsSelectable="true"
+                                android:scrollHorizontally="false"
+                                />
+
+                        </TableRow>
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textview_settings_developer_runcloudtestdescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Cloud Based Test"
+                                />
+
+                            <Button
+                                android:id="@+id/button_settings_run_cloud_tests"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="RUN"
+                                android:textColor="@color/colorRedAlert" />
+                        </TableRow>
+
+                        <TableRow android:padding="8dp">
+
+                            <TextView
+                                android:id="@+id/textview_settings_run_cloud_tests_debugoutput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </TableRow>
+
+                    </TableLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</LinearLayout>
