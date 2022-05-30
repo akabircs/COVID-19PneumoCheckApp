@@ -27,13 +27,6 @@
             android:layout_height="wrap_content"
             android:indeterminate="true" />
 
-        <ProgressBar
-            android:id="@+id/progressbar_help_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
