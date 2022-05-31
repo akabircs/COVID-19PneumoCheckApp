@@ -8,20 +8,25 @@ import java.net.URL;
 public class DownloadHelper {
 
     public static byte[] downloadImageBytes(String imageUrl) throws IOException {
-        URL url = new URL(imageUrl);
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
 
-        try (InputStream stream = url.openStream()) {
-            byte[] buffer = new byte[4096];
+        try {
+            URL url = new URL(imageUrl);
 
-            while (true) {
-                int bytesRead = stream.read(buffer);
-                if (bytesRead < 0) {
-                    break;
+            try (InputStream stream = url.openStream()) {
+                byte[] buffer = new byte[4096];
+
+                while (true) {
+                    int bytesRead = stream.read(buffer);
+                    if (bytesRead < 0) {
+                        break;
+                    }
+                    output.write(buffer, 0, bytesRead);
                 }
-                output.write(buffer, 0, bytesRead);
             }
+        } catch (IOException e) {
+            throw e;
         }
 
         return output.toByteArray();

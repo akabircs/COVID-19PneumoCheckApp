@@ -183,9 +183,11 @@ public class SubmissionsRecyclerViewAdapter extends RecyclerView.Adapter<Submiss
      */
     public void removeItem(SubmissionModel info) {
         int position = data.indexOf(info);
-        data.remove(position);
-        ToastHelper.showShortToast(context, "Deleted Submission");
-        notifyItemRemoved(position);
+        if (position != -1) {
+            data.remove(position);
+            ToastHelper.showShortToast(context, "Deleted Submission");
+            notifyItemRemoved(position);
+        }
     }
 
     /**
