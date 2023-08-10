@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,6 +86,12 @@ public class SettingsFragment extends Fragment {
     //Toggle Switch
     private SwitchMaterial enableCTScanSwitch;
     private SwitchMaterial enableContinualAISwitch;
+
+    private MaterialRadioButton radioLocal;
+    private MaterialRadioButton radioCloud;
+
+    // Cloud Server URL
+    private EditText continualAIServerHostname;
 
     //Developer
     private TextView developerRunLocalTestDescriptionTextView;
@@ -267,17 +274,65 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        // Local or Cloud Continual AI Switch
-        enableContinualAISwitch = root.findViewById(R.id.materialswitch_settings_enablecontinualai);
-        enableContinualAISwitch.setChecked(sharedpreferences.getBoolean("enableContinualAi", false));
-        enableContinualAISwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        continualAIServerHostname = root.findViewById(R.id.edittext_settings_continualaihostname);
+        continualAIServerHostname.setText(sharedpreferences.getString("continualAIServerHostname", "http://xxx.xxx.xxx.xxx:8888"));
+        continualAIServerHostname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b) {
+                    //Lost Focus
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString("continualAIServerHostname", continualAIServerHostname.getText().toString());
+                    editor.apply();
+                    CloudMLXrayContinualServerClient.setDOMAIN(continualAIServerHostname.getText().toString());
+                }
+            }
+        });
+
+//        // Local or Cloud Continual AI Switch
+//        enableContinualAISwitch = root.findViewById(R.id.materialswitch_settings_enablecontinualai);
+//        enableContinualAISwitch.setChecked(sharedpreferences.getBoolean("enableContinualAi", false));
+//        enableContinualAISwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                // Save to shared preferences for the app
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.putBoolean("enableContinualAi", b);
+//                editor.apply();
+//                Log.i(TAG, "Continual AI Switch:" + b);
+//            }
+//        });
+
+//         Local or Cloud Continual AI Radio Button Switch
+        radioCloud = root.findViewById(R.id.radiobutton_settings_usecontinualai);
+        radioCloud.setChecked(sharedpreferences.getBoolean("enableContinualAi", false));
+        radioCloud.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 // Save to shared preferences for the app
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putBoolean("enableContinualAi", b);
                 editor.apply();
-                Log.i(TAG, "Continual AI Switch:" + b);
+
+                radioLocal.setChecked(!b);
+
+                Log.i(TAG, "Continual AI Radio Cloud:" + b);
+            }
+        });
+
+        radioLocal = root.findViewById(R.id.radiobutton_settings_usecontinualai2);
+        radioLocal.setChecked(!sharedpreferences.getBoolean("enableContinualAi", false));
+        radioLocal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // Save to shared preferences for the app
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putBoolean("enableContinualAi", !b);
+                editor.apply();
+
+                radioCloud.setChecked(!b);
+
+                Log.i(TAG, "Continual AI Radio Local:" + b);
             }
         });
 

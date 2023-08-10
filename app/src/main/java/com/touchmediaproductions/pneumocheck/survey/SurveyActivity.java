@@ -60,7 +60,7 @@ public class SurveyActivity extends AppCompatActivity {
 
         setupUI();
 
-        InstructionStep instructionStep = new InstructionStep("Demographics & Symptoms Survey", "To contribute towards COVID-19 research, this survey will collect some basic demographics, medical history, some voice samples (whilst you read text on the screen), and a few seconds of coughing. Please ensure that when recoding the sounds you are in a quiet environment. We also collect, if allowed, one sample of your location.\nIf you agree to collecting this data press 'I agree', otherwise use the back button or back gesture to go back.", "I agree", false, new StepIdentifier("intro"));
+        InstructionStep instructionStep = new InstructionStep("Demographics & Symptoms Survey", "To contribute towards COVID-19 research, this survey will collect some basic demographics, medical history. \nIf you agree to collecting this data press 'I agree', otherwise use the back button or back gesture to go back.", "I agree", false, new StepIdentifier("intro"));
 
         QuestionStep bioSexQuestion = new QuestionStep("Biological Sex", "Which is your biological sex?", "Next", new AnswerFormat.BooleanAnswerFormat(
                 "Male", "Female", AnswerFormat.BooleanAnswerFormat.Result.None

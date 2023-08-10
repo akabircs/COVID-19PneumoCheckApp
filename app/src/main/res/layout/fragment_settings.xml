@@ -356,13 +356,15 @@
                         android:layout_height="match_parent"
                         android:paddingHorizontal="8dp">
 
-                        <TableRow android:padding="8dp">
+                        <TableRow android:padding="8dp"  android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="4"
-                                android:text="Enable CTScan" />
+                                android:text="Enable CTScan"
+
+                                />
 
                             <com.google.android.material.switchmaterial.SwitchMaterial
                                 android:id="@+id/materialswitch_settings_allowctscan"
@@ -372,20 +374,63 @@
                                 android:theme="@style/PCCustomToggleSwitchTheme" />
                         </TableRow>
 
+
+
+
+
+                        <TableRow android:padding="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Use Local AI" />
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/radiobutton_settings_usecontinualai2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:theme="@style/PCCustomToggleSwitchTheme" />
+
+                            <!--                            <com.google.android.material.switchmaterial.SwitchMaterial-->
+                            <!--                                android:id="@+id/materialswitch_settings_enablecontinualai"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_weight="1"-->
+                            <!--                                android:theme="@style/PCCustomToggleSwitchTheme" />-->
+                        </TableRow>
+
                         <TableRow android:padding="8dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="4"
-                                android:text="Enable Continual AI" />
+                                android:text="Use Continual AI" />
 
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/materialswitch_settings_enablecontinualai"
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/radiobutton_settings_usecontinualai"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:checked="false"
                                 android:theme="@style/PCCustomToggleSwitchTheme" />
+
+
+                        </TableRow>
+
+                        <TableRow android:padding="8dp">
+                            <EditText
+                                android:id="@+id/edittext_settings_continualaihostname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="IP or hostname domain"
+                                android:inputType="textUri"
+                                android:text="continualai.com"
+                                android:autofillHints="" />
                         </TableRow>
 
                     </TableLayout>

@@ -183,6 +183,9 @@ public class FirestoreRepository {
         xrayMetadata.put("probabilities", probabilitiesMap);
         xrayMetadata.put("imageType", xrayTypeName);
 
+        // Adding Learnt At
+        xrayMetadata.put("learntAt", submission.getLearntAt());
+
         FirestoreRepository.getFirestoreInstance().collection("submissions").add(xrayMetadata).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

@@ -26,7 +26,7 @@ public class DownloadHelper {
                 }
             }
         } catch (IOException e) {
-            throw e;
+//            throw e;
         }
 
         return output.toByteArray();

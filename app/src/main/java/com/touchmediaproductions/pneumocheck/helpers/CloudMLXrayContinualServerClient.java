@@ -7,7 +7,11 @@ import java.io.IOException;
 public class CloudMLXrayContinualServerClient {
 
     final static String TAG = "CloudMLXrayContinualServerClient";
-    final static String DOMAIN = "http://192.168.1.134:8888";
+    static String DOMAIN = "http://192.168.1.134:8888";
+
+    public static void setDOMAIN(String domain){
+        DOMAIN = domain;
+    }
 
     public static void ping(){
         new Thread(() -> {

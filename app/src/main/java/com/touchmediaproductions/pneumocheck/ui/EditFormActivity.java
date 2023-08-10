@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.Editable;
@@ -25,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -44,6 +46,7 @@ import com.touchmediaproductions.pneumocheck.ml.PytorchMLHelper;
 import com.touchmediaproductions.pneumocheck.models.SubmissionModel;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.function.BiFunction;
@@ -627,6 +630,7 @@ public class EditFormActivity extends AppCompatActivity {
     /**
      * Commit submissions form and submit to database
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void submitSubmissionForm() {
         //If the fields are valid
         if (validateFields()) {
@@ -654,12 +658,15 @@ public class EditFormActivity extends AppCompatActivity {
             try {
                 age = Integer.parseInt(ageEditTextLayout.getEditText().getText().toString());
             } catch (Exception ex) {
-                age = new Integer(0);
+                age = 0;
             }
             String sex = sexSpinner.getSelectedItem().toString();
             byte[] pictureByteArray = PictureHelper.bitmapToByteArray(croppedImageBitMap);
             SubmissionModel.XrayType xrayType = SubmissionModel.XrayType.CXR;
+
+            // Fake the learnt process
             Timestamp learntAt = null;
+//            Timestamp learntAt = new Timestamp(todaysDate);
 
             //Add to database
             SubmissionModel submission = new SubmissionModel(numericId,
@@ -700,6 +707,7 @@ public class EditFormActivity extends AppCompatActivity {
         builder.setMessage(R.string.promptmessage_gainagreement_submit)
                 .setCancelable(false)
                 .setPositiveButton(R.string.response_i_agree, new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     public void onClick(DialogInterface dialog, int id) {
                         //Finally Submit Form
                         submitSubmissionForm();
