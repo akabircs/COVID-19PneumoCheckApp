@@ -1,7 +1,7 @@
 # COVID-19 PneumoCheck - Mobile Chest X-Rays Classifier App
 
 <p align="center">
-  <img width="250" src="diagrams/TrainingProcess.png">
+  <img width="720" src="diagrams/TrainingProcess.png">
 </p>
 
 Since the World Health Organization declared COVID-19 a pandemic, efforts have been made to track the mobility and long-term effects of the virus, as well as screen, diagnose, and analyse symptoms. Although RT-PCR has been the gold standard for COVID-19 testing, limited resources for large populations have forced public authorities to pursue alternative methods. Many studies have leveraged artificial intelligence (AI) to predict COVID-19 on medical images. However, the AI system used must be able to adapt as virus strains evolve and different clinical pictures emerge.
@@ -14,7 +14,7 @@ We further used the best performing model to design and implement a novel COVID-
 We defined a methodology for creating a continual learning model in which we trained a conventional task sequential ML model and used it as the foundation model. Several preprocessing strategies, including cropping, segmentation, and histogram equalisation, were used to train the foundation model. We found that using the original, unmodified chest X-ray gave the best results. We tested both regularisation and memory-based methods, using different memory sizes, for the continual learning. We defined an overall performance measurement matrix that considers both average forgetting and average accuracy to aid in the analysis of the experimental results. The best candidate foundation model was DenseNet161, with 96.87±0.88 accuracy, and the best continual learning method was LwF (Learning without Forgetting), with an overall performance metric result of 71.99%.
 
 <p align="center">
-  <img width="250" src="diagrams/system-architecture.png">
+  <img width="720" src="diagrams/system-architecture.png">
 </p>
 
 The mobile application uses the continual learning DenseNet161 LwF model, which was implemented on a server in the cloud. The model learns new instances of patient chest X-rays and their classification as they are submitted. The COVID-19 screening app features the ability to run a local offline foundation model and implements symptom screening methods found in related works. The app also facilitates user and submission management, COVID-19 diagnosis predictions, and survey symptom tracking.
@@ -22,19 +22,19 @@ The mobile application uses the continual learning DenseNet161 LwF model, which 
 #### Continual Learning Training Process (Initiated by Mobile App)
 
 <p align="center">
-  <img width="250" src="diagrams/Training.png">
+  <img width="720" src="diagrams/Training.png">
 </p>
 
 #### Continual Learning Inference Process (Mobile App)
 
 <p align="center">
-  <img width="250" src="diagrams/Inference.png">
+  <img width="720" src="diagrams/Inference.png">
 </p>
 
 ## Mobile Application
 
 <p align="center">
-  <img width="250" src="screenshots/iconlogo.png">
+  <img width="720" src="screenshots/iconlogo.png">
 </p>
 
 An android application to track and classify COVID-19, Pneumonia or Normal chest X-Rays that implements continual learning to improve the model with doctor confirmed diagnosis.
