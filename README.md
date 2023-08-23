@@ -1,15 +1,15 @@
 # COVID-19 PneumoCheck - Mobile Chest X-Rays Classifier App
 
-<p align="center">
-  <img width="720" src="diagrams/TrainingProcess.png">
-</p>
-
 Since the World Health Organization declared COVID-19 a pandemic, efforts have been made to track the mobility and long-term effects of the virus, as well as screen, diagnose, and analyse symptoms. Although RT-PCR has been the gold standard for COVID-19 testing, limited resources for large populations have forced public authorities to pursue alternative methods. Many studies have leveraged artificial intelligence (AI) to predict COVID-19 on medical images. However, the AI system used must be able to adapt as virus strains evolve and different clinical pictures emerge.
 
 Continual learning has shown its adaptive capacity to learn new classes and instances without having to train from scratch. Currently, conventional task sequential machine learning (ML) models are used to train on COVID-19 datasets. However, advances in continual learning have reduced the resources required to retrain a model, and training can be done on demand from a patient’s mobile device.
 
 We have evaluated state-of-the-art continual learning methods for detecting COVID-19 from chest X-ray imaging.
 We further used the best performing model to design and implement a novel COVID-19 screening mobile app.
+
+<p align="center">
+  <img width="720" src="diagrams/TrainingProcess.png">
+</p>
 
 We defined a methodology for creating a continual learning model in which we trained a conventional task sequential ML model and used it as the foundation model. Several preprocessing strategies, including cropping, segmentation, and histogram equalisation, were used to train the foundation model. We found that using the original, unmodified chest X-ray gave the best results. We tested both regularisation and memory-based methods, using different memory sizes, for the continual learning. We defined an overall performance measurement matrix that considers both average forgetting and average accuracy to aid in the analysis of the experimental results. The best candidate foundation model was DenseNet161, with 96.87±0.88 accuracy, and the best continual learning method was LwF (Learning without Forgetting), with an overall performance metric result of 71.99%.
 
