@@ -34,7 +34,7 @@ The mobile application uses the continual learning DenseNet161 LwF model, which 
 ## Mobile Application
 
 <p align="center">
-  <img width="720" src="screenshots/iconlogo.png">
+  <img width="250" src="screenshots/iconlogo.png">
 </p>
 
 An android application to track and classify COVID-19, Pneumonia or Normal chest X-Rays that implements continual learning to improve the model with doctor confirmed diagnosis.
