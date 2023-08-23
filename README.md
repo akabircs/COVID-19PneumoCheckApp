@@ -48,6 +48,10 @@ An android application to track and classify COVID-19, Pneumonia or Normal chest
   <img width="200" src="screenshots/screenshot04.png">
 </p>
 
+<p align="center">
+  <img width="720" src="diagrams/ui-design.png">
+</p>
+
 Recommended android version : Android Marshmellow (6)
 
 ## Download
