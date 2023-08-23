@@ -52,7 +52,7 @@ An android application to track and classify COVID-19, Pneumonia or Normal chest
   <img width="720" src="diagrams/ui-design.png">
 </p>
 
-Recommended android version : Android Marshmellow (6)
+Minimum android version : Android Marshmellow (6)
 
 ## Download
 
@@ -112,7 +112,7 @@ Your submission (along with all the identifiable data) is stored in the app spec
 
 The database only exists while you have the application installed, as soon as you uninstall the application, all the database entries will be removed and the database erased.
 
-## Keeps saying invalid X-ray provided
+## If it Keeps saying invalid X-ray provided
 
 The application is pretty good at discriminating between Valid and Invalid X-Rays.
 If the application continues to say that the Chest X-Ray provided is not a valid X-Ray, you can try the following:
@@ -121,12 +121,3 @@ If the application continues to say that the Chest X-Ray provided is not a valid
 - Make sure that area around the X-Ray is not in the image. (Such as the table the X-Ray may be on or the wall it is mounted on if the X-Ray is in a medical X-ray film viewer)
 - Make sure that the X-Ray is not severely dirty, damaged or warped.
 - Make sure the X-Ray is FLAT on the surface where it rests.
-
-### Models used in Chest X-Ray Classification
-
-The models used in this application can be found at my other repo:
-https://github.com/DannyFGitHub/pneumoCheck-Models-TFLite-COVID-Net
-
-# Next Steps
-
-- Integrating Location and optional location tracking.
