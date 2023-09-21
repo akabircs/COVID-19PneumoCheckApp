@@ -73,13 +73,13 @@ Permissions requested by the app at the time of writing include:
   <img src="https://github.com/DannyFGitHub.png?size=50">
 </a>
 
-Danny Falero (PhD Student)
+Danny Falero (PhD Student at Charles Sturt University)
 
 <a href="https://github.com/akabircs.png">
   <img src="https://github.com/akabircs.png?size=50">
 </a>
 
-[Associate Professor Ashad Kabir](https://researchoutput.csu.edu.au/en/persons/akabircsueduau)
+[Associate Professor Ashad Kabir](https://researchoutput.csu.edu.au/en/persons/akabircsueduau) (Project lead)
 
 
 
