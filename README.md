@@ -66,6 +66,10 @@ Permissions requested by the app at the time of writing include:
 - Read and Write Storage - for Chest X-Ray saving and retreiving (to and from app database))
 - Camera - for taking pictures of X-Rays.
 
+##Team/Contributors
+Danny Falero (PhD Student)
+Associate Professor Ashad Kabir https://researchoutput.csu.edu.au/en/persons/akabircsueduau
+
 ## FAQ
 
 ### How to use this app
