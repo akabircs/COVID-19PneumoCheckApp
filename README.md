@@ -68,8 +68,20 @@ Permissions requested by the app at the time of writing include:
 
 ## Team/Contributors
 
-- Danny Falero (PhD Student)
-- [Associate Professor Ashad Kabir](https://researchoutput.csu.edu.au/en/persons/akabircsueduau)
+
+<a href="https://github.com/DannyFGitHub">
+  <img src="https://github.com/DannyFGitHub.png?size=50">
+</a>
+
+Danny Falero (PhD Student)
+
+<a href="https://github.com/akabircs.png">
+  <img src="https://github.com/akabircs.png?size=50">
+</a>
+
+[Associate Professor Ashad Kabir](https://researchoutput.csu.edu.au/en/persons/akabircsueduau)
+
+
 
 ## FAQ
 
@@ -128,6 +140,4 @@ If the application continues to say that the Chest X-Ray provided is not a valid
 - Make sure the X-Ray is FLAT on the surface where it rests.
 
 
-<a href="https://github.com/remarkablemark/html-react-parser/graphs/contributors">
-  <img src="https://opencollective.com/html-react-parser/contributors.svg?width=890&button=false">
-</a>
+
