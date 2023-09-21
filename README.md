@@ -126,3 +126,8 @@ If the application continues to say that the Chest X-Ray provided is not a valid
 - Make sure that area around the X-Ray is not in the image. (Such as the table the X-Ray may be on or the wall it is mounted on if the X-Ray is in a medical X-ray film viewer)
 - Make sure that the X-Ray is not severely dirty, damaged or warped.
 - Make sure the X-Ray is FLAT on the surface where it rests.
+
+
+<a href="https://github.com/remarkablemark/html-react-parser/graphs/contributors">
+  <img src="https://opencollective.com/html-react-parser/contributors.svg?width=890&button=false">
+</a>
