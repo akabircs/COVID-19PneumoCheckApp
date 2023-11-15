@@ -95,7 +95,9 @@ public class SubmissionsRecyclerViewAdapter extends RecyclerView.Adapter<Submiss
         }
 
         holder.textview_initials.setText(initialsBadge);
-        holder.textview_xrayid.setText(String.valueOf(data.get(position).getId()));
+        if(holder.textview_xrayid != null) {
+            holder.textview_xrayid.setText(String.valueOf(data.get(position).getId()));
+        }
         holder.textview_firstname.setText(firstname);
         holder.textview_lastname.setText(lastname);
 //        holder.textview_age.setText(String.valueOf(data.get(position).getAge()));

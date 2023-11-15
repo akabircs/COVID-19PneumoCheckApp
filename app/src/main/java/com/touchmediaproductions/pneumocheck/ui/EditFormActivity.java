@@ -36,7 +36,6 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.touchmediaproductions.pneumocheck.MainActivity;
 import com.touchmediaproductions.pneumocheck.R;
-import com.touchmediaproductions.pneumocheck.helpers.CloudMLXrayContinualServerClient;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 import com.touchmediaproductions.pneumocheck.helpers.KeyboardHelper;
 import com.touchmediaproductions.pneumocheck.helpers.PictureHelper;
@@ -46,7 +45,6 @@ import com.touchmediaproductions.pneumocheck.ml.MLHelper;
 import com.touchmediaproductions.pneumocheck.models.SubmissionModel;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.function.BiFunction;
@@ -640,7 +638,6 @@ public class EditFormActivity extends AppCompatActivity {
             BiFunction<String, String, String> runAfterImageIsUploaded = null;
             if(enableContinualAi) {
                 runAfterImageIsUploaded = (submissionId, imageUrl) -> {
-                    CloudMLXrayContinualServerClient.classify(submissionId);
                     return imageUrl;
                 };
             }
@@ -672,8 +669,6 @@ public class EditFormActivity extends AppCompatActivity {
                     userId,
                     firstName,
                     lastName,
-                    age,
-                    sex,
                     dateFromDatePicker,
                     todaysDate,
                     predictionConfirmation,

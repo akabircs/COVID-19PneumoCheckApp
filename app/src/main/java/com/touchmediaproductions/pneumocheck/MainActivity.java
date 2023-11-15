@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -31,10 +30,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.touchmediaproductions.pneumocheck.helpers.CloudMLXrayContinualServerClient;
 import com.touchmediaproductions.pneumocheck.helpers.CropImageHelper;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 import com.touchmediaproductions.pneumocheck.helpers.PermissionsHelper;

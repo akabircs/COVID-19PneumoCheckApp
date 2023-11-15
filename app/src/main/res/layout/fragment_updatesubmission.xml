@@ -173,49 +173,6 @@
 
                                         </TableRow>
 
-                                        <TableRow>
-
-                                            <com.google.android.material.textfield.TextInputLayout
-                                                style="@style/TextAppearance.AppCompat.Small"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-                                                app:boxBackgroundColor="@android:color/transparent">
-
-                                                <com.google.android.material.textfield.TextInputEditText
-                                                    android:id="@+id/edittext_updatesubmission_age"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
-                                                    android:hint="Age"
-                                                    android:inputType="number"
-                                                    android:maxLength="3" />
-                                            </com.google.android.material.textfield.TextInputLayout>
-                                        </TableRow>
-
-                                        <TableRow>
-
-                                            <TextView
-                                                style="@style/TextAppearance.AppCompat.Small"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="2"
-                                                android:padding="15dp"
-                                                android:text="Sex:" />
-
-                                            <androidx.appcompat.widget.AppCompatSpinner
-                                                android:id="@+id/spinner_updatesubmission_sex"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="4"
-                                                android:entries="@array/sexes"
-                                                android:hapticFeedbackEnabled="true"
-                                                android:padding="15dp"
-                                                android:spinnerMode="dialog"
-                                                android:visibility="visible" />
-                                        </TableRow>
-
                                         <View
                                             android:layout_width="match_parent"
                                             android:layout_height="1dp"

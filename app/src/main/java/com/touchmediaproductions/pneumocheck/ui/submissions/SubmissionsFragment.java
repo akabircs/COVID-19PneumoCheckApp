@@ -24,7 +24,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.touchmediaproductions.pneumocheck.R;
 import com.touchmediaproductions.pneumocheck.adapters.SubmissionsRecyclerViewAdapter;
-import com.touchmediaproductions.pneumocheck.helpers.DataBaseHelper;
 import com.touchmediaproductions.pneumocheck.helpers.DimensionHelper;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 import com.touchmediaproductions.pneumocheck.helpers.ToastHelper;
@@ -44,8 +43,6 @@ public class SubmissionsFragment extends Fragment{
     private RecyclerView submissionsRecyclerView;
     private SubmissionsRecyclerViewAdapter submissionsRecyclerAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-
-    private DataBaseHelper dataBaseHelper;
 
     private ArrayList<SubmissionModel> submissionModelArrayList = new ArrayList<>();
 
@@ -103,9 +100,6 @@ public class SubmissionsFragment extends Fragment{
         //Submissions
         submissionsRecyclerView = root.findViewById(R.id.recyclerview_submissionsfragment_submissions);
 
-        //Prepare Database
-        dataBaseHelper = new DataBaseHelper(getContext());
-
         populateData();
 
         model.getAllSubmissionsForUser(authenticatedUserUID).observe(requireActivity(), submissionModels -> {
@@ -153,19 +147,11 @@ public class SubmissionsFragment extends Fragment{
                 if (data.getExtras().containsKey("updatedSubmission")) {
                     SubmissionModel updatedSubmission = (SubmissionModel) data.getExtras().getSerializable("updatedSubmission");
                     int submissionToUpdatePosition = data.getExtras().getInt("position");
-                    if(updateSubmissionInAdapter(updatedSubmission, submissionToUpdatePosition)){
-                        ToastHelper.showShortToast(getContext(), "Submission Updated");
-                    }
+//                    if(updateSubmissionInAdapter(updatedSubmission, submissionToUpdatePosition)){
+//                        ToastHelper.showShortToast(getContext(), "Submission Updated");
+//                    }
                 }
             }
         }
-    }
-
-    private boolean updateSubmissionInAdapter(SubmissionModel updatedSubmission, int position) {
-        if(dataBaseHelper.updateSubmission(updatedSubmission)) {
-            submissionsRecyclerAdapter.updateItem(position, updatedSubmission);
-            return true;
-        }
-        return false;
     }
 }

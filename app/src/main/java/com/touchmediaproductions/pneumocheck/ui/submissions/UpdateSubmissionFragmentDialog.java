@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,7 +33,6 @@ import androidx.fragment.app.DialogFragment;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.touchmediaproductions.pneumocheck.R;
-import com.touchmediaproductions.pneumocheck.helpers.CloudMLXrayContinualServerClient;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 import com.touchmediaproductions.pneumocheck.helpers.KeyboardHelper;
 import com.touchmediaproductions.pneumocheck.helpers.PictureHelper;
@@ -42,7 +40,6 @@ import com.touchmediaproductions.pneumocheck.helpers.ToastHelper;
 import com.touchmediaproductions.pneumocheck.ml.MLHelper;
 import com.touchmediaproductions.pneumocheck.models.SubmissionModel;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -118,9 +115,6 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
 
         firstnameField = root.findViewById(R.id.edittext_updatesubmission_firstname);
         lastnameField = root.findViewById(R.id.edittext_updatesubmission_lastname);
-        ageField = root.findViewById(R.id.edittext_updatesubmission_age);
-
-        sexField = root.findViewById(R.id.spinner_updatesubmission_sex);
 
         submissionCreationDateField = root.findViewById(R.id.textview_updatesubmission_scancreationdate_viewonly);
 
@@ -140,10 +134,6 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
             xRayIdDisplay.setText("X-RAYID:"+ submissionToEdit.getId());
             firstnameField.setText(submissionToEdit.getFirstName());
             lastnameField.setText(submissionToEdit.getLastName());
-            ageField.setText(String.valueOf(submissionToEdit.getAge()));
-
-            //Set Selection of spinner position by first querying the position of the sex string in the adapter.
-            sexField.setSelection(((ArrayAdapter<String>) sexField.getAdapter()).getPosition(submissionToEdit.getSex()));
 
             submissionCreationDateField.setText(submissionToEdit.getScanCreationDate().toString());
 
@@ -190,9 +180,6 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
 
                     // Update Firestore
                     FirestoreRepository.updateSubmission(updatedSubmission.getId(), updatedSubmission);
-
-                    // Teach continual AI if enabled.
-                    ifContinualAITeachModel(updatedSubmission.getId(), predictionConfirmation);
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("updatedSubmission", updatedSubmission);
@@ -245,8 +232,6 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
             String xRayID = submissionToEdit.getId();
             String firstName = firstnameField.getText().toString();
             String lastName = lastnameField.getText().toString();
-            int age = Integer.parseInt(ageField.getText().toString());
-            String sex = sexField.getSelectedItem().toString();
             Date scanCreationDate = submissionToEdit.getScanCreationDate();
             Date submissionCreationDate = submissionToEdit.getSubmissionCreationDate();
             SubmissionModel.Confirmation confirmation = predictionConfirmation;
@@ -256,7 +241,7 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
             SubmissionModel.XrayType xrayType = SubmissionModel.XrayType.CXR;
             Timestamp learntAt = submissionToEdit.getLearntAt();
 
-            return new SubmissionModel(xRayID, userId, firstName, lastName, age, sex, scanCreationDate, submissionCreationDate, confirmation, prediction, crxPhoto, xrayType, learntAt);
+            return new SubmissionModel(xRayID, userId, firstName, lastName, scanCreationDate, submissionCreationDate, confirmation, prediction, crxPhoto, xrayType, learntAt);
         } else {
             return null;
         }
@@ -373,15 +358,6 @@ public class UpdateSubmissionFragmentDialog  extends DialogFragment {
             AlertDialog  agreementConfirmationDialog = agreementConfirmDiagnosisDialogBuilder.create();
             agreementConfirmationDialog.show();
 
-        }
-    }
-
-    private void ifContinualAITeachModel(String submissionId, SubmissionModel.Confirmation predictionConfirmation){
-        SharedPreferences sharedpreferences = getContext().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
-        boolean allowCTScan = sharedpreferences.getBoolean("allowCTScan", false);
-        boolean enableContinualAi = sharedpreferences.getBoolean("enableContinualAi", false);
-        if(enableContinualAi){
-            CloudMLXrayContinualServerClient.train(submissionId, predictionConfirmation.getDescription());
         }
     }
 

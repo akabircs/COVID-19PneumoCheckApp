@@ -53,8 +53,6 @@ public class SubmissionModel implements Serializable {
     private String id;
     private String firstName;
     private String lastName;
-    private int age;
-    private String sex;
     private Date scanCreationDate;
     private Date submissionCreationDate;
     private Confirmation confirmation;
@@ -65,12 +63,10 @@ public class SubmissionModel implements Serializable {
     private Timestamp learntAt;
 
 
-    public SubmissionModel(String id, String userId, String firstName, String lastName, int age, String sex, Date scanCreationDate, Date submissionCreationDate, Confirmation confirmation, MLHelper.Prediction prediction, byte[] cxrayPhoto, XrayType xrayType, Timestamp learntAt) {
+    public SubmissionModel(String id, String userId, String firstName, String lastName, Date scanCreationDate, Date submissionCreationDate, Confirmation confirmation, MLHelper.Prediction prediction, byte[] cxrayPhoto, XrayType xrayType, Timestamp learntAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
-        this.sex = sex;
         this.scanCreationDate = scanCreationDate;
         this.submissionCreationDate = submissionCreationDate;
         this.confirmation = confirmation;
@@ -88,8 +84,6 @@ public class SubmissionModel implements Serializable {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
                 ", scanCreationDate=" + scanCreationDate +
                 ", submissionCreationDate=" + submissionCreationDate +
                 ", confirmation=" + confirmation +
@@ -128,14 +122,6 @@ public class SubmissionModel implements Serializable {
     public String getLastName() { return lastName; }
 
     public void setLastName(String lastName) { this.lastName = lastName; }
-
-    public int getAge() { return age; }
-
-    public void setAge(int age) { this.age = age; }
-
-    public String getSex() { return sex; }
-
-    public void setSex(String sex) { this.sex = sex; }
 
     public MLHelper.Prediction getPrediction() {
         return prediction;

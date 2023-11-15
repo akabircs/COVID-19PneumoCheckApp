@@ -126,8 +126,6 @@ public class SubmissionsViewModel extends ViewModel {
                                                     userId,
                                                     finalFirstName,
                                                     finalLastName,
-                                                    finalAge,
-                                                    finalSex,
                                                     DateHelper.fromIso8601StringBackToDate(submission.getDateOfScan()),
                                                     DateHelper.fromIso8601StringBackToDate(submission.getSubmissionDate()),
                                                     confirmation,
