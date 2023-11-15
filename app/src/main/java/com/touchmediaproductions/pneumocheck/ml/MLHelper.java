@@ -75,16 +75,6 @@ public class MLHelper {
 
         //Depending on the given model loaded set the variables and labels to be used
         switch (model) {
-            case MODEL_A_COVIDNET:
-            case MODEL_B_COVIDNET:
-                this.PROBABILITY_MEAN = 0.0f;
-                this.PROBABILITY_STD = 1.0f;
-                this.IMAGE_MEAN = 127.5f;
-                this.IMAGE_STD = 127.5f;
-                this.LABEL_FILE_NAME = "labels_covidnet.txt";
-                //Use firebase ML for the covidnet models
-                firebaseTFLite = FirebaseCXRayMLHelper.getInstance().getFirebaseTFLite();
-                break;
 //            case FLOAT_XRAY_MODEL:
 //                this.PROBABILITY_MEAN = 0.0f;
 //                this.PROBABILITY_STD = 1.0f;

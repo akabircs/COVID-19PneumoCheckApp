@@ -89,6 +89,8 @@ public class FirestoreRepository {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Log.i(TAG, "User cloud profile was deleted successfully.");
+                } else {
+                    Log.i(TAG, "User cloud profile could not be deleted.");
                 }
             }
         });

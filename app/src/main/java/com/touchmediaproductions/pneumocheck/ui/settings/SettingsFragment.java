@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,29 +22,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.touchmediaproductions.pneumocheck.R;
 import com.touchmediaproductions.pneumocheck.helpers.DimensionHelper;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 import com.touchmediaproductions.pneumocheck.helpers.FolderHelper;
 import com.touchmediaproductions.pneumocheck.helpers.PermissionsHelper;
-import com.touchmediaproductions.pneumocheck.helpers.TestImageSetInferenceHelper;
 import com.touchmediaproductions.pneumocheck.helpers.ToastHelper;
 import com.touchmediaproductions.pneumocheck.models.UserProfile;
-
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class SettingsFragment extends Fragment {
 
@@ -91,20 +80,12 @@ public class SettingsFragment extends Fragment {
     private TextView displayNameTextView;
     private TextView userNameTextView;
     private TextView accountTypeTextView;
-    private TextView ageTextView;
-    private TextView sexTextView;
-
-    private LinearLayout ageLinearLayout;
-    private LinearLayout sexLinearLayout;
 
     //Pane Title
     private TextView pageTitle;
 
     //Associated Accounts
     private TextView associatedAccountsLabel;
-
-    //Override Model Local Choose
-    private MaterialCardView overrideModelCard;
 
     //Authenticated User
     private String authenticatedUserUID;
@@ -137,11 +118,6 @@ public class SettingsFragment extends Fragment {
         displayNameTextView = root.findViewById(R.id.textview_settings_firstname);
         userNameTextView = root.findViewById(R.id.textview_settings_username);
         accountTypeTextView = root.findViewById(R.id.textview_settings_accounttype);
-        ageTextView = root.findViewById(R.id.textview_settings_age);
-        sexTextView = root.findViewById(R.id.textview_settings_sex);
-
-        ageLinearLayout = root.findViewById(R.id.linearlayout_settings_age);
-        sexLinearLayout = root.findViewById(R.id.linearlayout_settings_sex);
 
 //        addDoctor = root.findViewById(R.id.button_settings_adddoctor);
         // On click show dialog to enter code
@@ -190,16 +166,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        //Override Model
-        overrideModelCard = root.findViewById(R.id.materialcard_settings_overridemodellocalchoose);
-        btnChooseModel = root.findViewById(R.id.button_settings_choosemodel);
-        btnChooseModel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Choose model Here
-            }
-        });
-
         //User Related Details UI
         logoutButton = root.findViewById(R.id.button_settings_logout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -230,14 +196,7 @@ public class SettingsFragment extends Fragment {
                             updateUIToMatchParticipantView();
                         } else if (accountType == FirestoreRepository.AccountType.doctor) {
                             updateUIToMatchDoctorView();
-                        } else if (accountType == FirestoreRepository.AccountType.researcher) {
-                            updateUIToMatchResearcherView();
                         }
-
-                        sexTextView.setText(userProfiles.getSex() != null ? userProfiles.getSex().toUpperCase() : "");
-                        ageTextView.setText(userProfiles.getAge() != null ? userProfiles.getAge().toUpperCase() : "");
-                        sexLinearLayout.setVisibility(View.VISIBLE);
-                        ageLinearLayout.setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -272,14 +231,8 @@ public class SettingsFragment extends Fragment {
         alert.show();
     }
 
-    private void updateUIToMatchResearcherView() {
-//        associatedAccountsLabel.setText("Associated Accounts");
-        overrideModelCard.setVisibility(View.VISIBLE);
-    }
-
     private void updateUIToMatchParticipantView() {
 //        associatedAccountsLabel.setText("My Doctors");
-        overrideModelCard.setVisibility(View.GONE);
     }
 
     private void updateUIToMatchDoctorView() {
@@ -339,7 +292,11 @@ public class SettingsFragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Log.i(TAG, "Your user account has been deleted.");
-                    getActivity().finish();
+//                    getActivity().finish();
+                } else {
+                    Log.i(TAG, "Failed to delete your account.");
+                    Log.i(TAG, task.getException().getMessage());
+                    ToastHelper.showLongToast(getContext(), task.getException().getMessage());
                 }
             }
         });

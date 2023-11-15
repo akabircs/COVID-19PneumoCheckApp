@@ -92,64 +92,6 @@
                         android:layout_weight="4"
                         android:background="@color/colorNotificationDrawablesLight" />
                 </TableRow>
-
-                <TableRow
-                    android:paddingHorizontal="8dp"
-                    android:paddingBottom="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/linearlayout_settings_age"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/textview_settings_agelabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Age:"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/colorSecondaryLight" />
-
-                        <TextView
-                            android:id="@+id/textview_settings_age"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="8dp"
-                            android:text="E.G."
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/colorSecondaryLight" />
-                    </LinearLayout>
-                </TableRow>
-
-                <TableRow
-                    android:paddingHorizontal="8dp"
-                    android:paddingBottom="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/linearlayout_settings_sex"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/textview_settings_sexlabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sex:"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/colorSecondaryLight" />
-
-                        <TextView
-                            android:id="@+id/textview_settings_sex"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="8dp"
-                            android:text="E.G."
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/colorSecondaryLight" />
-                    </LinearLayout>
-                </TableRow>
             </TableLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -312,38 +254,6 @@
                     </TableLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialcard_settings_overridemodellocalchoose"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="20dp">
-
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingHorizontal="8dp">
-
-                        <TableRow android:padding="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Override Model" />
-
-                            <Button
-                                android:id="@+id/button_settings_choosemodel"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Choose..."
-                                android:textColor="@color/colorPrimary" />
-                        </TableRow>
-
-                    </TableLayout>
-                </com.google.android.material.card.MaterialCardView>
 
 <!--                <com.google.android.material.card.MaterialCardView-->
 <!--                    android:layout_width="match_parent"-->

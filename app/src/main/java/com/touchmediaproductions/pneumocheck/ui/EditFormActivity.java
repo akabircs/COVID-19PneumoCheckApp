@@ -545,12 +545,6 @@ public class EditFormActivity extends AppCompatActivity {
                     Log.i(TAG, "Continual AI is enabled");
                     confirmPredictionButton.setVisibility(View.GONE);
                     declinePredictionButton.setVisibility(View.GONE);
-                } else {
-//                    Log.i(TAG, "Continual AI is disabled");
-//                    PytorchMLHelper pytorchMLHelper = PytorchMLHelper.getInstance();
-//                    //                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, BitmapFactory.decodeStream(getAssets().open("normal_xray.jpg")));
-//                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, croppedImageBitMap);
-
                 }
 
                 //As classification completed, tell the loadingCircle in the UI thread to disappear.
