@@ -21,7 +21,6 @@ import com.google.firebase.storage.UploadTask;
 import com.touchmediaproductions.pneumocheck.MainActivity;
 import com.touchmediaproductions.pneumocheck.ml.MLHelper;
 import com.touchmediaproductions.pneumocheck.models.SubmissionModel;
-import com.touchmediaproductions.pneumocheck.survey.SurveyResults;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,13 +40,6 @@ public class FirestoreRepository {
         doctor, participant, researcher
     }
 
-    /**
-     * SruveyState
-     */
-    public enum SurveyState {
-        complete, incomplete, neverattempted
-    }
-
     public static FirebaseFirestore getFirestoreInstance() {
         return fsDatabase;
     }
@@ -59,14 +51,13 @@ public class FirestoreRepository {
      * @param displayName
      * @param accountType
      */
-    public static void createUserProfile(String uid, String displayName, AccountType accountType, SurveyState surveyState) {
+    public static void createUserProfile(String uid, String displayName, AccountType accountType) {
         Map<String, Object> user = new HashMap<>();
         //uid might be unecessary if already adding the document under the uid name
         user.put("uid", uid);
         /////////////////////////////
         user.put("displayName", displayName);
         user.put("accountType", accountType.toString());
-        user.put("surveyState", surveyState.toString());
         user.put("associatedUsers", new ArrayList<String>());
 
 
@@ -138,21 +129,6 @@ public class FirestoreRepository {
             }
         });
     }
-
-    public static Task<Void> saveSurveyResults(String userUID, SurveyResults surveyResults) {
-        Map<String, Object> surveyResultsMap = new HashMap<>();
-        surveyResultsMap.put("sex", surveyResults.getSex());
-        surveyResultsMap.put("age", surveyResults.getAge());
-        surveyResultsMap.put("medicalConditions", surveyResults.getMedicalConditions());
-        surveyResultsMap.put("smoker", surveyResults.getSmoker());
-        surveyResultsMap.put("todaySymptom", surveyResults.getTodaySymptom());
-        surveyResultsMap.put("covidResults", surveyResults.getCovidResults());
-        surveyResultsMap.put("hospitalStatus", surveyResults.getHospitalised());
-        surveyResultsMap.put("surveyState", surveyResults.getSurveyState());
-
-        return fsDatabase.collection("users").document(userUID).update(surveyResultsMap);
-    }
-
 
     public static boolean add(SubmissionModel submission, BiFunction<String, String, String> runAfterImageIsUploaded) {
         Date scanCreationDate = submission.getScanCreationDate();

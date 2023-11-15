@@ -4,10 +4,12 @@ package com.touchmediaproductions.pneumocheck.helpers;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Takes care of all permission purposes.
@@ -21,8 +23,8 @@ public class PermissionsHelper {
             Manifest.permission.CAMERA
     };
     private static final String[] STORAGE_PERMISSIONS = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.READ_MEDIA_IMAGES,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
     private static final int REQUEST_MULTIPLE = 3;
@@ -48,11 +50,9 @@ public class PermissionsHelper {
     }
 
     public boolean checkStoragePermission() {
-        int permissionWriteExternalMemory = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int permissionReadExternalMemory = context.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
-
-        if (permissionWriteExternalMemory == PackageManager.PERMISSION_DENIED || permissionReadExternalMemory == PackageManager.PERMISSION_DENIED) {
-            if (context.shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        int permissionReadExternalMemory = context.checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES);
+        if (permissionReadExternalMemory == PackageManager.PERMISSION_DENIED) {
+            if (context.shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES)) {
                 ToastHelper.showShortToast(context, "Storage permission is needed to save user generated files.");
             }
             context.requestPermissions(STORAGE_PERMISSIONS, REQUEST_STORAGE);
@@ -82,6 +82,8 @@ public class PermissionsHelper {
     }
 
     private void commitRequestPermissions(String[] permissions) {
+        Log.i("PermissionsHelper", "Requesting permissions: " + Arrays.toString(
+                permissions) + "..." + permissions.length);
         context.requestPermissions(permissions, REQUEST_MULTIPLE);
     }
 
@@ -113,6 +115,7 @@ public class PermissionsHelper {
                 // Permission Granted
             } else {
                 ToastHelper.showShortToast(context, "Permissions were not granted, please check app permissions in settings.");
+                // Request the permission
             }
             return true;
         } else {

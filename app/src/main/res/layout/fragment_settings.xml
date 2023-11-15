@@ -196,79 +196,79 @@
                     </TableLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardview_settings_surveycompletioncard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="20dp">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cardview_settings_surveycompletioncard"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    app:cardCornerRadius="20dp">-->
 
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingHorizontal="8dp">
+<!--                    <TableLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:paddingHorizontal="8dp">-->
 
-                        <TableRow android:padding="8dp">
+<!--                        <TableRow android:padding="8dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Profile Survey" />
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="4"-->
+<!--                                android:text="Profile Survey" />-->
 
-                            <Button
-                                android:id="@+id/button_settings_completesurvey"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Start"
-                                android:textColor="@color/colorPrimary" />
-                        </TableRow>
+<!--                            <Button-->
+<!--                                android:id="@+id/button_settings_completesurvey"-->
+<!--                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="Start"-->
+<!--                                android:textColor="@color/colorPrimary" />-->
+<!--                        </TableRow>-->
 
-                    </TableLayout>
-                </com.google.android.material.card.MaterialCardView>
+<!--                    </TableLayout>-->
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardview_settings_associatedaccounts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="20dp">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:id="@+id/cardview_settings_associatedaccounts"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    app:cardCornerRadius="20dp">-->
 
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingHorizontal="8dp">
+<!--                    <TableLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:paddingHorizontal="8dp">-->
 
-                        <TableRow android:padding="8dp">
+<!--                        <TableRow android:padding="8dp">-->
 
-                            <TextView
-                                android:id="@+id/textview_settings_associatedaccountslabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Associated Accounts" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/textview_settings_associatedaccountslabel"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="4"-->
+<!--                                android:text="Associated Accounts" />-->
 
-                            <Button
-                                android:id="@+id/button_settings_adddoctor"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="ADD"
-                                android:textColor="@color/colorPrimary" />
-                        </TableRow>
+<!--                            <Button-->
+<!--                                android:id="@+id/button_settings_adddoctor"-->
+<!--                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="ADD"-->
+<!--                                android:textColor="@color/colorPrimary" />-->
+<!--                        </TableRow>-->
 
-                        <TableRow android:layout_width="match_parent">
+<!--                        <TableRow android:layout_width="match_parent">-->
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerview_settings_associatedaccounts"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
-                        </TableRow>
-                    </TableLayout>
-                </com.google.android.material.card.MaterialCardView>
+<!--                            <androidx.recyclerview.widget.RecyclerView-->
+<!--                                android:id="@+id/recyclerview_settings_associatedaccounts"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>-->
+<!--                        </TableRow>-->
+<!--                    </TableLayout>-->
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
                 <View
                     android:layout_width="50dp"
@@ -345,96 +345,96 @@
                     </TableLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="20dp">
+<!--                <com.google.android.material.card.MaterialCardView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="8dp"-->
+<!--                    app:cardCornerRadius="20dp">-->
 
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingHorizontal="8dp">
+<!--                    <TableLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:paddingHorizontal="8dp">-->
 
-                        <TableRow android:padding="8dp"  android:visibility="gone">
+<!--                        <TableRow android:padding="8dp"  android:visibility="gone">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Enable CTScan"
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="4"-->
+<!--                                android:text="Enable CTScan"-->
 
-                                />
+<!--                                />-->
 
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/materialswitch_settings_allowctscan"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:theme="@style/PCCustomToggleSwitchTheme" />
-                        </TableRow>
-
-
+<!--                            <com.google.android.material.switchmaterial.SwitchMaterial-->
+<!--                                android:id="@+id/materialswitch_settings_allowctscan"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:theme="@style/PCCustomToggleSwitchTheme" />-->
+<!--                        </TableRow>-->
 
 
 
-                        <TableRow android:padding="8dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Use Local AI" />
-
-                            <com.google.android.material.radiobutton.MaterialRadioButton
-                                android:id="@+id/radiobutton_settings_usecontinualai2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:checked="true"
-                                android:theme="@style/PCCustomToggleSwitchTheme" />
-
-                            <!--                            <com.google.android.material.switchmaterial.SwitchMaterial-->
-                            <!--                                android:id="@+id/materialswitch_settings_enablecontinualai"-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_weight="1"-->
-                            <!--                                android:theme="@style/PCCustomToggleSwitchTheme" />-->
-                        </TableRow>
-
-                        <TableRow android:padding="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:text="Use Continual AI" />
 
 
-                            <com.google.android.material.radiobutton.MaterialRadioButton
-                                android:id="@+id/radiobutton_settings_usecontinualai"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:checked="false"
-                                android:theme="@style/PCCustomToggleSwitchTheme" />
+<!--&lt;!&ndash;                        <TableRow android:padding="8dp">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_weight="4"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:text="Use Local AI" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <com.google.android.material.radiobutton.MaterialRadioButton&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:id="@+id/radiobutton_settings_usecontinualai2"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:checked="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:theme="@style/PCCustomToggleSwitchTheme" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            &lt;!&ndash;                            <com.google.android.material.switchmaterial.SwitchMaterial&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                                android:id="@+id/materialswitch_settings_enablecontinualai"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                                android:layout_weight="1"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                            &lt;!&ndash;                                android:theme="@style/PCCustomToggleSwitchTheme" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        </TableRow>&ndash;&gt;-->
+
+<!--                        <TableRow android:padding="8dp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="4"-->
+<!--                                android:text="Use Continual AI" />-->
 
 
-                        </TableRow>
+<!--&lt;!&ndash;                            <com.google.android.material.radiobutton.MaterialRadioButton&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:id="@+id/radiobutton_settings_usecontinualai"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:checked="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:theme="@style/PCCustomToggleSwitchTheme" />&ndash;&gt;-->
 
-                        <TableRow android:padding="8dp">
-                            <EditText
-                                android:id="@+id/edittext_settings_continualaihostname"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:hint="IP or hostname domain"
-                                android:inputType="textUri"
-                                android:text="continualai.com"
-                                android:autofillHints="" />
-                        </TableRow>
 
-                    </TableLayout>
-                </com.google.android.material.card.MaterialCardView>
+<!--                        </TableRow>-->
+
+<!--                        <TableRow android:padding="8dp">-->
+<!--                            <EditText-->
+<!--                                android:id="@+id/edittext_settings_continualaihostname"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:hint="IP or hostname domain"-->
+<!--                                android:inputType="textUri"-->
+<!--                                android:text="continualai.com"-->
+<!--                                android:autofillHints="" />-->
+<!--                        </TableRow>-->
+
+<!--                    </TableLayout>-->
+<!--                </com.google.android.material.card.MaterialCardView>-->
 
                 <View
                     android:layout_width="50dp"
@@ -517,6 +517,7 @@
                     app:cardCornerRadius="20dp">
 
                     <TableLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingHorizontal="8dp">

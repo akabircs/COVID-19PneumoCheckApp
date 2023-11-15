@@ -26,4 +26,5 @@
     <string name="predictionconfirmation_agreement_confirmsubmit">\"By confirming a diagnosis you agree that you have received an official diagnosis outside of this app  and have been tested and diagnosed by a professional COVID-19 medical center.\n\nAre you sure you wish to confirm the prediction \"</string>
     <string name="confirmprediction_agreement_providediagnosticresult_prompt">By confirming a diagnosis you agree that you have received an official diagnosis outside of this app and have been tested and diagnosed by a professional COVID-19 medical center.\n\nPlease select the diagnosis you received from your doctor.</string>
     <string name="shared_preferences_key">PneumoCheck-Shared-Preferences</string>
+    <string name="starting_request">Starting request...</string>
 </resources>

@@ -9,9 +9,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
-import com.google.firebase.ml.custom.FirebaseCustomRemoteModel;
+//import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
+//import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
+//import com.google.firebase.ml.custom.FirebaseCustomRemoteModel;
+import com.google.firebase.ml.modeldownloader.CustomModel;
+import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions;
+import com.google.firebase.ml.modeldownloader.DownloadType;
+import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader;
 import com.touchmediaproductions.pneumocheck.helpers.FirestoreRepository;
 
 import org.tensorflow.lite.Interpreter;
@@ -45,59 +49,26 @@ public class FirebaseCXRayMLHelper {
 
 
     private void prepareFirebaseCXRayML() {
-        //FIREBASE ML
-        final FirebaseCustomRemoteModel remoteModel = new FirebaseCustomRemoteModel.Builder(MODELNAME).build();
 
-        final FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder()
-                .requireWifi()
+        final CustomModelDownloadConditions conditions = new CustomModelDownloadConditions.Builder()
+                .requireWifi()  // Also possible: .requireCharging() and .requireDeviceIdle()
                 .build();
 
-        FirebaseModelManager.getInstance().isModelDownloaded(remoteModel).addOnCompleteListener(new OnCompleteListener<Boolean>() {
-            @Override
-            public void onComplete(@NonNull Task<Boolean> task) {
-                if (task.isSuccessful()) {
-                    Log.i(TAG, "Is Model Downloaded " + task.getResult().booleanValue());
-                    if (task.getResult().booleanValue()) {
-                        Log.i(TAG, "Using Latest Model File " + remoteModel.getModelName());
-                        FirebaseModelManager.getInstance().getLatestModelFile(remoteModel)
-                                .addOnCompleteListener(new OnCompleteListener<File>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<File> task) {
-                                        File modelFile = task.getResult();
-                                        if (modelFile != null) {
-                                            firebaseTFLite = new Interpreter(modelFile);
-                                        }
-                                    }
-                                });
-                    } else {
-                        //Download the model as its not downloaded:
-                        Log.i(TAG, "Downloading Model File: " + remoteModel.getModelName());
-                        FirebaseModelManager.getInstance().download(remoteModel, conditions)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void v) {
-                                        // Download complete. Depending on your app, you could enable
-                                        // the ML feature, or switch from the local model to the remote
-                                        // model, etc.
-                                        Log.i(TAG, "Model downloaded " + remoteModel.getModelName() + " from FIREBASE");
-                                        Log.i(TAG, "Using downloaded Model File " + remoteModel.getModelName());
-                                        FirebaseModelManager.getInstance().getLatestModelFile(remoteModel)
-                                                .addOnCompleteListener(new OnCompleteListener<File>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<File> task) {
-                                                        File modelFile = task.getResult();
-                                                        if (modelFile != null) {
-                                                            firebaseTFLite = new Interpreter(modelFile);
-                                                        }
-                                                    }
-                                                });
-                                    }
-                                });
-                    }
-                }
-            }
-        });
 
+        FirebaseModelDownloader.getInstance().getModel(
+                        MODELNAME,
+                        DownloadType.LOCAL_MODEL_UPDATE_IN_BACKGROUND, conditions)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        CustomModel model = task.getResult();
+                        Log.i(TAG, "Using Latest Model File " + model.getName());
+                        Log.i(TAG, "Model Downloaded: " + model.getDownloadId());
+                        firebaseTFLite = new Interpreter(model.getFile());
+
+                    } else {
+                        Log.e(TAG, "Error downloading model: " + task.getException());
+                    }
+                });
 
         //Prepare Fetch Labels from Firestore
         FirestoreRepository.getMLModelLabels(this.getModelName()).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

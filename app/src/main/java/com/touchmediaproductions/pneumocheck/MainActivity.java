@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     //User Details
     private String userId;
     private FirestoreRepository.AccountType accountType;
-    private FirestoreRepository.SurveyState surveyState;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(UserProfile userProfiles) {
                 accountType = FirestoreRepository.AccountType.valueOf(userProfiles.getAccountType().toLowerCase());
-                surveyState = FirestoreRepository.SurveyState.valueOf(userProfiles.getSurveyState());
+ /*               surveyState = FirestoreRepository.SurveyState.valueOf(userProfiles.getSurveyState());
                 if (accountType == FirestoreRepository.AccountType.participant && surveyState == FirestoreRepository.SurveyState.neverattempted) {
                     //If never attempted show dialog box and once dismissed transfer user to the
 
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                             })
                             .setIcon(R.drawable.ic_baseline_person_outline_24)
                             .show();
-                }
+                }*/
             }
         });
 
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         addFromCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (permissionsHelper.checkMultiplePermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                if (permissionsHelper.checkMultiplePermissions(Manifest.permission.CAMERA)) {
                     picture = null;
                     pictureHelper.launchTakePictureIntent();
                 }
@@ -188,20 +188,6 @@ public class MainActivity extends AppCompatActivity {
                 pictureHelper.selectPhoto();
             }
         });
-
-        //PREPARE Models
-        // Not using this for now for downloading the model from Firebase
-        // FirebaseCXRayMLHelper.getInstance();
-
-        // DELETE ME:
-        //        PytorchMLHelper pytorchMLHelper = PytorchMLHelper.getInstance();
-        //        try {
-        //            pytorchMLHelper.runClassificationOnBitmap(this, BitmapFactory.decodeStream(getAssets().open("normal_xray.jpg")));
-        //        } catch (IOException e) {
-        //            e.printStackTrace();
-        //        }
-        CloudMLXrayContinualServerClient.ping();
-        Log.i(TAG, getSystemInfoString(this));
 
         refreshSubmissionsFragment();
     }

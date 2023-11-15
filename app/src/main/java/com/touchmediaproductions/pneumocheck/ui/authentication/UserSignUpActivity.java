@@ -366,7 +366,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                             //Use this UID to create a firestore profile
                             String uniqueUserID = user.getUid();
                             //Create user profile too.
-                            FirestoreRepository.createUserProfile(uniqueUserID, displayName, accountType, FirestoreRepository.SurveyState.neverattempted);
+                            FirestoreRepository.createUserProfile(uniqueUserID, displayName, accountType);
 
                             finishAndReturnToLogin(USER_CREATED_SUCCESS);
 

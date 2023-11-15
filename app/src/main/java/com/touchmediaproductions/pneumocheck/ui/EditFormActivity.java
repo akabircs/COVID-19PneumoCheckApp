@@ -42,7 +42,7 @@ import com.touchmediaproductions.pneumocheck.helpers.KeyboardHelper;
 import com.touchmediaproductions.pneumocheck.helpers.PictureHelper;
 import com.touchmediaproductions.pneumocheck.helpers.ToastHelper;
 import com.touchmediaproductions.pneumocheck.ml.MLHelper;
-import com.touchmediaproductions.pneumocheck.ml.PytorchMLHelper;
+//import com.touchmediaproductions.pneumocheck.ml.PytorchMLHelper;
 import com.touchmediaproductions.pneumocheck.models.SubmissionModel;
 
 import java.text.SimpleDateFormat;
@@ -541,18 +541,17 @@ public class EditFormActivity extends AppCompatActivity {
 //                prediction = MLHelper.runClassificationOnBitmap(EditFormActivity.this, croppedImageBitMap, MLModels.MODEL_A_COVIDNET);
 
                 SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
-                boolean allowCTScan = sharedpreferences.getBoolean("allowCTScan", false);
-                boolean enableContinualAi = sharedpreferences.getBoolean("enableContinualAi", false);
+                boolean enableContinualAi = sharedpreferences.getBoolean("enableContinualAi", true);
 
                 if (enableContinualAi) {
                     Log.i(TAG, "Continual AI is enabled");
                     confirmPredictionButton.setVisibility(View.GONE);
                     declinePredictionButton.setVisibility(View.GONE);
                 } else {
-                    Log.i(TAG, "Continual AI is disabled");
-                    PytorchMLHelper pytorchMLHelper = PytorchMLHelper.getInstance();
-                    //                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, BitmapFactory.decodeStream(getAssets().open("normal_xray.jpg")));
-                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, croppedImageBitMap);
+//                    Log.i(TAG, "Continual AI is disabled");
+//                    PytorchMLHelper pytorchMLHelper = PytorchMLHelper.getInstance();
+//                    //                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, BitmapFactory.decodeStream(getAssets().open("normal_xray.jpg")));
+//                    prediction = pytorchMLHelper.runClassificationOnBitmap(EditFormActivity.this, croppedImageBitMap);
 
                 }
 
@@ -730,8 +729,7 @@ public class EditFormActivity extends AppCompatActivity {
     private boolean validateFields() {
 
         SharedPreferences sharedpreferences = getApplicationContext().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
-        boolean allowCTScan = sharedpreferences.getBoolean("allowCTScan", false);
-        boolean enableContinualAi = sharedpreferences.getBoolean("enableContinualAi", false);
+        boolean enableContinualAi = sharedpreferences.getBoolean("enableContinualAi", true);
 
         boolean userDetailsValid = true;
         //If user is not a participant, then validate all fields. (we already have participant details)

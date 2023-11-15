@@ -1,7 +1,5 @@
 package com.touchmediaproductions.pneumocheck.ui.settings;
 
-import static com.touchmediaproductions.pneumocheck.survey.SurveyActivity.SURVEY_COMPLETED;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -52,8 +50,7 @@ import com.touchmediaproductions.pneumocheck.helpers.ResearchTests;
 import com.touchmediaproductions.pneumocheck.helpers.TestImageSetInferenceHelper;
 import com.touchmediaproductions.pneumocheck.helpers.ToastHelper;
 import com.touchmediaproductions.pneumocheck.models.UserProfile;
-import com.touchmediaproductions.pneumocheck.survey.SurveyActivity;
-import com.touchmediaproductions.pneumocheck.survey.SurveyResults;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,7 +60,6 @@ import java.util.UUID;
 public class SettingsFragment extends Fragment {
 
     private static final String TAG = "SettingsFragment";
-    private static final int REQUEST_ATTEMPT_SURVEY = 101;
 
     // Must be 10+
     private final int BATCH_TEST_LOCAL_LIMIT = 200;
@@ -76,7 +72,7 @@ public class SettingsFragment extends Fragment {
 
     //Buttons
     private Button logoutButton;
-    private Button completeSurveyButton;
+
     private Button clearCache;
     private Button btnChooseModel;
     private Button deleteDatabase;
@@ -114,17 +110,11 @@ public class SettingsFragment extends Fragment {
     //Pane Title
     private TextView pageTitle;
 
-    //Profile Survey Complete Card
-    private MaterialCardView completeSurveyCard;
-
     //Associated Accounts
     private TextView associatedAccountsLabel;
 
     //Override Model Local Choose
     private MaterialCardView overrideModelCard;
-
-    //Survey State
-    private FirestoreRepository.SurveyState surveyState;
 
     //Authenticated User
     private String authenticatedUserUID;
@@ -153,17 +143,6 @@ public class SettingsFragment extends Fragment {
         pageTitle.setCompoundDrawables(drawable, null, null, null);
         pageTitle.setCompoundDrawablePadding(dp8);
 
-        //SURVEY
-        completeSurveyCard = root.findViewById(R.id.cardview_settings_surveycompletioncard);
-        completeSurveyButton = root.findViewById(R.id.button_settings_completesurvey);
-        completeSurveyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent startSurvey = new Intent(getActivity(), SurveyActivity.class);
-                startActivityForResult(startSurvey, REQUEST_ATTEMPT_SURVEY);
-            }
-        });
-
         //PROFILE CARD
         displayNameTextView = root.findViewById(R.id.textview_settings_firstname);
         userNameTextView = root.findViewById(R.id.textview_settings_username);
@@ -174,23 +153,23 @@ public class SettingsFragment extends Fragment {
         ageLinearLayout = root.findViewById(R.id.linearlayout_settings_age);
         sexLinearLayout = root.findViewById(R.id.linearlayout_settings_sex);
 
-        addDoctor = root.findViewById(R.id.button_settings_adddoctor);
+//        addDoctor = root.findViewById(R.id.button_settings_adddoctor);
         // On click show dialog to enter code
-        addDoctor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAddDoctorDialog();
-            }
-        });
+//        addDoctor.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showAddDoctorDialog();
+//            }
+//        });
 
-        //Delete Database
-        deleteDatabase = root.findViewById(R.id.button_settings_cleardb);
-        deleteDatabase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteDatabaseWithAlert();
-            }
-        });
+//        //Delete Database
+//        deleteDatabase = root.findViewById(R.id.button_settings_cleardb);
+//        deleteDatabase.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                deleteDatabaseWithAlert();
+//            }
+//        });
 
         //DELETE ACCOUNT
         deleteAccount = root.findViewById(R.id.button_settings_deleteaccount);
@@ -256,42 +235,42 @@ public class SettingsFragment extends Fragment {
         displayCurrentAuthenticatedUser();
 
         //Associated Acocunts
-        associatedAccountsLabel = root.findViewById(R.id.textview_settings_associatedaccountslabel);
+//        associatedAccountsLabel = root.findViewById(R.id.textview_settings_associatedaccountslabel);
 
         SharedPreferences sharedpreferences = requireActivity().getSharedPreferences(getString(R.string.shared_preferences_key), Context.MODE_PRIVATE);
 
         //Enable CTScan Functionality
-        enableCTScanSwitch = root.findViewById(R.id.materialswitch_settings_allowctscan);
-        enableCTScanSwitch.setChecked(sharedpreferences.getBoolean("allowCTScan", false));
-        enableCTScanSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                //Enable CT Scan
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean("allowCTScan", b);
-                editor.apply();
-                Log.i(TAG, "CTScan Switch:" + b);
-            }
-        });
+//        enableCTScanSwitch = root.findViewById(R.id.materialswitch_settings_allowctscan);
+//        enableCTScanSwitch.setChecked(sharedpreferences.getBoolean("allowCTScan", false));
+//        enableCTScanSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                //Enable CT Scan
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.putBoolean("allowCTScan", b);
+//                editor.apply();
+//                Log.i(TAG, "CTScan Switch:" + b);
+//            }
+//        });
 
-        continualAIServerHostname = root.findViewById(R.id.edittext_settings_continualaihostname);
-        continualAIServerHostname.setText(sharedpreferences.getString("continualAIServerHostname", "http://xxx.xxx.xxx.xxx:8888"));
-        continualAIServerHostname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (!b) {
-                    //Lost Focus
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                    editor.putString("continualAIServerHostname", continualAIServerHostname.getText().toString());
-                    editor.apply();
-                    CloudMLXrayContinualServerClient.setDOMAIN(continualAIServerHostname.getText().toString());
-                }
-            }
-        });
+//        continualAIServerHostname = root.findViewById(R.id.edittext_settings_continualaihostname);
+//        continualAIServerHostname.setText(sharedpreferences.getString("continualAIServerHostname", "http://xxx.xxx.xxx.xxx:8888"));
+//        continualAIServerHostname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//                if (!b) {
+//                    //Lost Focus
+//                    SharedPreferences.Editor editor = sharedpreferences.edit();
+//                    editor.putString("continualAIServerHostname", continualAIServerHostname.getText().toString());
+//                    editor.apply();
+//                    CloudMLXrayContinualServerClient.setDOMAIN(continualAIServerHostname.getText().toString());
+//                }
+//            }
+//        });
 
 //        // Local or Cloud Continual AI Switch
 //        enableContinualAISwitch = root.findViewById(R.id.materialswitch_settings_enablecontinualai);
-//        enableContinualAISwitch.setChecked(sharedpreferences.getBoolean("enableContinualAi", false));
+//        enableContinualAISwitch.setChecked(sharedpreferences.getBoolean("enableContinualAi", true));
 //        enableContinualAISwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -304,37 +283,37 @@ public class SettingsFragment extends Fragment {
 //        });
 
 //         Local or Cloud Continual AI Radio Button Switch
-        radioCloud = root.findViewById(R.id.radiobutton_settings_usecontinualai);
-        radioCloud.setChecked(sharedpreferences.getBoolean("enableContinualAi", false));
-        radioCloud.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // Save to shared preferences for the app
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean("enableContinualAi", b);
-                editor.apply();
+//        radioCloud = root.findViewById(R.id.radiobutton_settings_usecontinualai);
+//        radioCloud.setChecked(sharedpreferences.getBoolean("enableContinualAi", true));
+//        radioCloud.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                // Save to shared preferences for the app
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.putBoolean("enableContinualAi", b);
+//                editor.apply();
+//
+//                radioLocal.setChecked(!b);
+//
+//                Log.i(TAG, "Continual AI Radio Cloud:" + b);
+//            }
+//        });
 
-                radioLocal.setChecked(!b);
-
-                Log.i(TAG, "Continual AI Radio Cloud:" + b);
-            }
-        });
-
-        radioLocal = root.findViewById(R.id.radiobutton_settings_usecontinualai2);
-        radioLocal.setChecked(!sharedpreferences.getBoolean("enableContinualAi", false));
-        radioLocal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // Save to shared preferences for the app
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean("enableContinualAi", !b);
-                editor.apply();
-
-                radioCloud.setChecked(!b);
-
-                Log.i(TAG, "Continual AI Radio Local:" + b);
-            }
-        });
+//        radioLocal = root.findViewById(R.id.radiobutton_settings_usecontinualai2);
+//        radioLocal.setChecked(!sharedpreferences.getBoolean("enableContinualAi", false));
+//        radioLocal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                // Save to shared preferences for the app
+//                SharedPreferences.Editor editor = sharedpreferences.edit();
+//                editor.putBoolean("enableContinualAi", !b);
+//                editor.apply();
+//
+//                radioCloud.setChecked(!b);
+//
+//                Log.i(TAG, "Continual AI Radio Local:" + b);
+//            }
+//        });
 
         //DEVELOPER TOOL
         MaterialCardView developerCard = root.findViewById(R.id.cardview_settings_developercard);
@@ -343,39 +322,39 @@ public class SettingsFragment extends Fragment {
         developerRunLocalTestDescriptionTextView = root.findViewById(R.id.textview_settings_developer_runlocaltestdescription);
         developerOutputRunLocalTests = root.findViewById(R.id.textview_settings_run_local_tests_debugoutput);
         developerButtonRunLocalTests = root.findViewById(R.id.button_settings_run_local_tests);
-        developerButtonRunLocalTests.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                developerOutputRunLocalTests.setText("Starting Local Test...");
-                developerButtonRunLocalTests.setVisibility(View.GONE);
-                // Play a notification sound
-                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                Ringtone r = RingtoneManager.getRingtone(requireActivity().getApplicationContext(), notification);
-                r.play();
-                new Thread(() -> {
-                    final int localLimit = BATCH_TEST_LOCAL_LIMIT;
-                    TestImageSetInferenceHelper.ImageSet[] imageSets = TestImageSetInferenceHelper.getImageUrls(requireActivity(), localLimit);
-                    Log.i(TAG, "ImageSets:" + imageSets.length);
-                    ResearchTests.LoadTimeTestResults loadingTimeResults = ResearchTests.runLoadingTest(requireActivity(), "covidxray_densenet161.ptl", localLimit);
-                    ResearchTests.InferenceTimeTestResults inferenceTimeResults = ResearchTests.runInferenceTest(requireActivity(), "covidxray_densenet161.ptl", imageSets);
-                    String sb = loadingTimeResults.getLoadTimeTestsAsCSV() + "\n\n" + loadingTimeResults.getLoadTimeResultsAsCSV() + "\n\n\n" +
-                            inferenceTimeResults.getInferenceTimeTestsAsCSV() + "\n\n" + inferenceTimeResults.getInferenceTimeResultsAsCSV();
-                    FirestoreRepository.pushLocalTestResults(requireActivity(),loadingTimeResults, inferenceTimeResults);
-                    developerOutputRunLocalTests.post(() -> {
-                        developerOutputRunLocalTests.setText(sb);
-                        developerButtonRunLocalTests.setVisibility(View.VISIBLE);
-                    });
-                    // Play a notification sound
-                    requireActivity().runOnUiThread(() -> {
-                        try {
-                            r.play();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
-                }).start();
-            }
-        });
+//        developerButtonRunLocalTests.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                developerOutputRunLocalTests.setText("Starting Local Test...");
+//                developerButtonRunLocalTests.setVisibility(View.GONE);
+//                // Play a notification sound
+//                Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//                Ringtone r = RingtoneManager.getRingtone(requireActivity().getApplicationContext(), notification);
+//                r.play();
+//                new Thread(() -> {
+//                    final int localLimit = BATCH_TEST_LOCAL_LIMIT;
+//                    TestImageSetInferenceHelper.ImageSet[] imageSets = TestImageSetInferenceHelper.getImageUrls(requireActivity(), localLimit);
+//                    Log.i(TAG, "ImageSets:" + imageSets.length);
+//                    ResearchTests.LoadTimeTestResults loadingTimeResults = ResearchTests.runLoadingTest(requireActivity(), "covidxray_densenet161.ptl", localLimit);
+//                    ResearchTests.InferenceTimeTestResults inferenceTimeResults = ResearchTests.runInferenceTest(requireActivity(), "covidxray_densenet161.ptl", imageSets);
+//                    String sb = loadingTimeResults.getLoadTimeTestsAsCSV() + "\n\n" + loadingTimeResults.getLoadTimeResultsAsCSV() + "\n\n\n" +
+//                            inferenceTimeResults.getInferenceTimeTestsAsCSV() + "\n\n" + inferenceTimeResults.getInferenceTimeResultsAsCSV();
+//                    FirestoreRepository.pushLocalTestResults(requireActivity(),loadingTimeResults, inferenceTimeResults);
+//                    developerOutputRunLocalTests.post(() -> {
+//                        developerOutputRunLocalTests.setText(sb);
+//                        developerButtonRunLocalTests.setVisibility(View.VISIBLE);
+//                    });
+//                    // Play a notification sound
+//                    requireActivity().runOnUiThread(() -> {
+//                        try {
+//                            r.play();
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    });
+//                }).start();
+//            }
+//        });
 
         developerRunCloudTestDescriptionTextView = root.findViewById(R.id.textview_settings_developer_runcloudtestdescription);
         developerOutputRunCloudTests = root.findViewById(R.id.textview_settings_run_cloud_tests_debugoutput);
@@ -386,7 +365,7 @@ public class SettingsFragment extends Fragment {
         developerButtonRunCloudTests.setVisibility(View.GONE);
 
         developerButtonRunCloudTests.setOnClickListener(view -> {
-            developerOutputRunCloudTests.setText("Starting request...");
+            developerOutputRunCloudTests.setText(R.string.starting_request);
             developerButtonRunCloudTests.setVisibility(View.GONE);
             new Thread(() -> {
 
@@ -497,16 +476,11 @@ public class SettingsFragment extends Fragment {
                         } else if (accountType == FirestoreRepository.AccountType.researcher) {
                             updateUIToMatchResearcherView();
                         }
-                        surveyState = FirestoreRepository.SurveyState.valueOf(userProfiles.getSurveyState());
-                        if (surveyState != null && surveyState == FirestoreRepository.SurveyState.complete) {
-                            sexTextView.setText(userProfiles.getSex().toUpperCase());
-                            ageTextView.setText(userProfiles.getAge().toUpperCase());
-                            sexLinearLayout.setVisibility(View.VISIBLE);
-                            ageLinearLayout.setVisibility(View.VISIBLE);
-                        } else {
-                            sexLinearLayout.setVisibility(View.GONE);
-                            ageLinearLayout.setVisibility(View.GONE);
-                        }
+
+                        sexTextView.setText(userProfiles.getSex() != null ? userProfiles.getSex().toUpperCase() : "");
+                        ageTextView.setText(userProfiles.getAge() != null ? userProfiles.getAge().toUpperCase() : "");
+                        sexLinearLayout.setVisibility(View.VISIBLE);
+                        ageLinearLayout.setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -542,18 +516,17 @@ public class SettingsFragment extends Fragment {
     }
 
     private void updateUIToMatchResearcherView() {
-        associatedAccountsLabel.setText("Associated Accounts");
+//        associatedAccountsLabel.setText("Associated Accounts");
         overrideModelCard.setVisibility(View.VISIBLE);
     }
 
     private void updateUIToMatchParticipantView() {
-        associatedAccountsLabel.setText("My Doctors");
+//        associatedAccountsLabel.setText("My Doctors");
         overrideModelCard.setVisibility(View.GONE);
     }
 
     private void updateUIToMatchDoctorView() {
-        associatedAccountsLabel.setText("My Patients");
-        completeSurveyCard.setVisibility(View.GONE);
+//        associatedAccountsLabel.setText("My Patients");
     }
 
     /**
@@ -590,30 +563,30 @@ public class SettingsFragment extends Fragment {
 
     }
 
-    /**
-     * Erase the database with prompt
-     */
-    private void deleteDatabaseWithAlert() {
-        if (askStoragePermission()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("WARNING!");
-            builder.setMessage("Are you sure you want to erase the entire PneumoCheck submissions database? This cannot be undone.")
-                    .setCancelable(false)
-                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            getActivity().deleteDatabase(DataBaseHelper.DATABASE_FILENAME);
-                            ToastHelper.showLongToast(getContext(), "Database Erased");
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-        }
-    }
+//    /**
+//     * Erase the database with prompt
+//     */
+//    private void deleteDatabaseWithAlert() {
+//        if (askStoragePermission()) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//            builder.setTitle("WARNING!");
+//            builder.setMessage("Are you sure you want to erase the entire PneumoCheck submissions database? This cannot be undone.")
+//                    .setCancelable(false)
+//                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            getActivity().deleteDatabase(DataBaseHelper.DATABASE_FILENAME);
+//                            ToastHelper.showLongToast(getContext(), "Database Erased");
+//                        }
+//                    })
+//                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.cancel();
+//                        }
+//                    });
+//            AlertDialog alertDialog = builder.create();
+//            alertDialog.show();
+//        }
+//    }
 
     /**
      * Ask for runtime storage permission (READ or WRITE)
@@ -638,27 +611,5 @@ public class SettingsFragment extends Fragment {
                 }
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_ATTEMPT_SURVEY:
-                if (resultCode == SURVEY_COMPLETED) {
-                    if (data != null) {
-                        SurveyResults surveyResults = data.getExtras().getParcelable("SurveyResults");
-                        //Survey Returned - update profile:
-                        saveSurveyToDatabase(authenticatedUserUID, surveyResults);
-                    }
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void saveSurveyToDatabase(String userUID, SurveyResults surveyResults) {
-        FirestoreRepository.saveSurveyResults(userUID, surveyResults);
     }
 }

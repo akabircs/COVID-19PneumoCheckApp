@@ -18,7 +18,7 @@ public class ToastHelper {
      */
     public static void showLongToast(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.BOTTOM, 0, 250);
+//        toast.setGravity(Gravity.BOTTOM, 0, 250);
         toast.show();
     }
 
@@ -30,7 +30,7 @@ public class ToastHelper {
      */
     public static void showShortToast(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 250);
+//        toast.setGravity(Gravity.BOTTOM, 0, 250);
         toast.show();
     }
 

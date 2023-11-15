@@ -98,10 +98,10 @@ public class SubmissionsRecyclerViewAdapter extends RecyclerView.Adapter<Submiss
         holder.textview_xrayid.setText(String.valueOf(data.get(position).getId()));
         holder.textview_firstname.setText(firstname);
         holder.textview_lastname.setText(lastname);
-        holder.textview_age.setText(String.valueOf(data.get(position).getAge()));
+//        holder.textview_age.setText(String.valueOf(data.get(position).getAge()));
         holder.textview_scancreationdate.setText(scanCreationDateString);
         holder.textview_submissioncreationdate.setText(submissionCreationDateString);
-        holder.textview_sex.setText(data.get(position).getSex());
+//        holder.textview_sex.setText(data.get(position).getSex());
         SubmissionModel.Confirmation predictionConfirmation = data.get(position).getConfirmation();
         MLHelper.Prediction prediction = data.get(position).getPrediction();
         byte[] photoInByte = data.get(position).getCxrPhoto();
@@ -263,8 +263,8 @@ public class SubmissionsRecyclerViewAdapter extends RecyclerView.Adapter<Submiss
             textview_xrayid = itemView.findViewById(R.id.textview_submissioncard_xrayid);
             textview_firstname = itemView.findViewById(R.id.textview_submissionscard_firstname);
             textview_lastname = itemView.findViewById(R.id.textview_submissionscard_lastname);
-            textview_age = itemView.findViewById(R.id.textview_submissionscard_age);
-            textview_sex = itemView.findViewById(R.id.textview_submissionscard_sex);
+//            textview_age = itemView.findViewById(R.id.textview_submissionscard_age);
+//            textview_sex = itemView.findViewById(R.id.textview_submissionscard_sex);
             textview_scancreationdate = itemView.findViewById(R.id.textview_submissioncard_scancreationdate);
             textview_submissioncreationdate = itemView.findViewById(R.id.textview_submissioncard_submissioncreationdate);
             //X-Ray preview
