@@ -24,7 +24,21 @@
             android:textAlignment="textStart"
             android:textColor="@color/colorSecondary"
             android:textSize="20sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="Pull to Refresh"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textColor="@color/colorSecondary"
+            android:textSize="16sp"
+
+            />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_submissions_notificationcard"

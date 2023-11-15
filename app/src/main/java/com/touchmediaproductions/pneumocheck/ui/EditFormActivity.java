@@ -559,7 +559,7 @@ public class EditFormActivity extends AppCompatActivity {
                 resultOutput.post(() -> {
                     if (prediction == null) {
                         if (enableContinualAi) {
-                            resultOutput.setText("Continual AI is enabled, results will appear after submission.");
+                            resultOutput.setText("Continual AI results will appear approximately 10 seconds after submission.");
                         }
                         return;
                     }
